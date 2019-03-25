@@ -1,0 +1,13 @@
+<div style="background-color: blue; color:white">
+  <h2>Counter using action creator</h2>
+  <button (click)="increment()">Increment</button>
+  <button (click)="incrementByTwo()">(payload) Increment By Two</button>
+  <button (click)="incrementByThree()">(props) Increment By Three</button>
+
+  <div>Current Count: {{ count$ | async }}</div>
+  <div>Message: {{ message$ | async }}</div>
+  
+  <button (click)="decrement()">Decrement</button>
+
+  <button (click)="reset()">Reset Counter</button>
+</div>
