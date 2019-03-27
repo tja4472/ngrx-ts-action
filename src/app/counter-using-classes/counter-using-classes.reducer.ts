@@ -16,9 +16,12 @@ export const initialState: State = {
 };
 
 export function counterReducer(state = initialState, action: Action): State {
-  const specificAction = action as CounterUsingClassesActionsUnion;
+  //
+  // ActionReducerMap compilation error when strictFunctionTypes is enabled in tsconfig
+  // https://github.com/ngrx/platform/issues/951
+  const reducerAction = action as CounterUsingClassesActionsUnion;
 
-  switch (specificAction.type) {
+  switch (reducerAction.type) {
     case CounterUsingClassesActionTypes.Increment: {
       return { ...state, count: state.count + 1 };
     }
@@ -26,12 +29,12 @@ export function counterReducer(state = initialState, action: Action): State {
     case CounterUsingClassesActionTypes.IncrementWithPayload: {
       return {
         ...state,
-        count: state.count + specificAction.payload.increment,
+        count: state.count + reducerAction.payload.increment,
       };
     }
 
     case CounterUsingClassesActionTypes.IncrementWithProps: {
-      return { ...state, count: state.count + specificAction.increment };
+      return { ...state, count: state.count + reducerAction.increment };
     }
 
     case CounterUsingClassesActionTypes.Decrement: {
@@ -43,7 +46,7 @@ export function counterReducer(state = initialState, action: Action): State {
     }
 
     case CounterUsingClassesActionTypes.SetMessage: {
-      return { ...state, message: specificAction.payload.message };
+      return { ...state, message: reducerAction.payload.message };
     }
 
     default:

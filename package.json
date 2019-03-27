@@ -1,6 +1,7 @@
 {
   "name": "ngrx-ts-action",
   "version": "0.0.0",
+  "homepage": "https://github.com/tja4472/ngrx-ts-action",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
